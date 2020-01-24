@@ -1,3 +1,5 @@
+let fetchResult;
+
 /*
 callListAPI(catId)
 Sends a request to the Paperlite API and returns an object with the request results.
@@ -15,12 +17,13 @@ function callListAPI(catId) {
 
 function fetchListAPI(catId) {
     if (!catId) catId = "";
-    fetch('https://ghibliapi.herokuapp.com/films' + catId)
+    fetch("https://paperlite.metroapp.com.au/api/media-list/list/" + catId)
         .then(response => {
             return response.json()
         })
         .then(data => {
             // Work with JSON data here
+            fetchResult = data;
             console.log(data)
         })
         .catch(err => {
